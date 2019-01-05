@@ -1,0 +1,27 @@
+{
+  "data": [
+    { "datastore": "F-C0032-001", "city": "全台灣" },
+    { "datastore": "F-D0047-001", "city": "宜蘭縣" },
+    { "datastore": "F-D0047-005", "city": "桃園市" },
+    { "datastore": "F-D0047-009", "city": "新竹縣" },
+    { "datastore": "F-D0047-013", "city": "苗栗縣" },
+    { "datastore": "F-D0047-017", "city": "彰化縣" },
+    { "datastore": "F-D0047-021", "city": "南投縣" },
+    { "datastore": "F-D0047-025", "city": "雲林縣" },
+    { "datastore": "F-D0047-029", "city": "嘉義縣" },
+    { "datastore": "F-D0047-033", "city": "屏東縣" },
+    { "datastore": "F-D0047-037", "city": "臺東縣" },
+    { "datastore": "F-D0047-041", "city": "花蓮縣" },
+    { "datastore": "F-D0047-045", "city": "澎湖縣" },
+    { "datastore": "F-D0047-049", "city": "基隆縣" },
+    { "datastore": "F-D0047-053", "city": "新竹市" },
+    { "datastore": "F-D0047-057", "city": "嘉義市" },
+    { "datastore": "F-D0047-061", "city": "臺北市" },
+    { "datastore": "F-D0047-065", "city": "高雄市" },
+    { "datastore": "F-D0047-069", "city": "新北市" },
+    { "datastore": "F-D0047-073", "city": "臺中市" },
+    { "datastore": "F-D0047-077", "city": "臺南市" },
+    { "datastore": "F-D0047-081", "city": "連江市" },
+    { "datastore": "F-D0047-085", "city": "金門市" }
+  ]
+}

@@ -1,0 +1,22 @@
+svg {
+  display: block;
+  margin: auto 350px;
+  width: 500px;
+  height: 100vh;
+}
+path {
+  stroke: white;
+  fill: transparent;
+  transition: 0.5s;
+  cursor: pointer;
+}
+path:hover {
+  fill: #3366ff;
+  transform: translate(-3px, -3px);
+}
+.title {
+  position: absolute;
+  right: 150px;
+  color: white;
+  font-size: 24px;
+}
