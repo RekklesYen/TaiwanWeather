@@ -1,17 +1,36 @@
 <div class="weather">
   <div class="title" v-if="cities.length">
-    <h1>台灣未來12小時天氣預報</h1>
+    <h1>台灣天氣預報</h1>
     <hr />
-    <div v-if="currentWeather.length">
-      <h1>{{ currentWeather[0].locationName }}</h1>
-      <h4>startTime: {{ Wx[0].startTime }}</h4>
-      <h4>endTime: {{ Wx[0].endTime }}</h4>
-      <h4>Wx: {{ Wx[0].parameter.parameterName }}</h4>
-      <h4>PoP: {{ PoP[0].parameter.parameterName }} %</h4>
-      <h4>MinT: {{ MinT[0].parameter.parameterName }} ℃</h4>
-      <h4>MaxT: {{ MaxT[0].parameter.parameterName }} ℃</h4>
-      <h4>CI: {{ CI[0].parameter.parameterName }}</h4>
+    <div class="time">
+      <span>未來</span>
+      <span href="#" @click="whichtime(0)" :class="{active:time===0}">
+        12
+      </span>
+      |
+      <span href="#" @click="whichtime(1)" :class="{active:time===1}">
+        24
+      </span>
+      |
+      <span href="#" @click="whichtime(2)" :class="{active:time===2}">
+        36
+      </span>
+      |
+      <span>小時</span>
     </div>
+    <hr />
+    <transition name="fade">
+      <div class="showtable" v-if="currentWeather.length && isclicked">
+        <h1>{{ currentWeather[0].locationName }}</h1>
+        <h4>起始時間: {{ data.startTime }}</h4>
+        <h4>終點時間: {{ data.endTime }}</h4>
+        <h4>天氣現象: {{ data.Wx }}</h4>
+        <h4>降雨機率: {{ data.PoP }} %</h4>
+        <h4>最高溫度: {{ data.MinT }} ℃</h4>
+        <h4>最低溫度: {{ data.MaxT }} ℃</h4>
+        <h4>舒適度: {{ data.CI }}</h4>
+      </div>
+    </transition>
   </div>
 
   <svg
@@ -84,6 +103,7 @@
     />
     <path
       id="3bb77815-2bc3-4801-b8fc-d6e3a2443162"
+      @click="clickHandler"
       @mouseenter="enterHandler"
       data-name="澎湖縣"
       class="96fdfe13-4732-40bb-9e9c-cdc6e310fcb9"
@@ -163,6 +183,7 @@
     />
     <path
       id="2b6aac2d-ce2d-4c48-89d5-ff2a81000e07"
+      @click="clickHandler"
       @mouseenter="enterHandler"
       data-name="嘉義縣"
       class="96fdfe13-4732-40bb-9e9c-cdc6e310fcb9"
@@ -176,6 +197,7 @@
     />
     <path
       id="30e45b59-571b-4340-a006-0ba62460619a"
+      @click="clickHandler"
       @mouseenter="enterHandler"
       data-name="臺中市"
       class="96fdfe13-4732-40bb-9e9c-cdc6e310fcb9"
@@ -183,6 +205,7 @@
     />
     <path
       id="21535635-db1e-4831-a63f-263ab3ed4b79"
+      @click="clickHandler"
       @mouseenter="enterHandler"
       data-name="基隆市"
       class="96fdfe13-4732-40bb-9e9c-cdc6e310fcb9"
@@ -190,6 +213,7 @@
     />
     <path
       id="21c4ba33-d057-42c1-9c71-be6061fc73cf"
+      @click="clickHandler"
       @mouseenter="enterHandler"
       data-name="屏東縣"
       class="96fdfe13-4732-40bb-9e9c-cdc6e310fcb9"
@@ -197,6 +221,7 @@
     />
     <path
       id="1e48e0bb-8964-4121-b347-b900162cf771"
+      @click="clickHandler"
       @mouseenter="enterHandler"
       data-name="臺北市"
       class="96fdfe13-4732-40bb-9e9c-cdc6e310fcb9"
@@ -204,6 +229,7 @@
     />
     <path
       id="66958373-17e2-4fab-8b83-b16e2d323782"
+      @click="clickHandler"
       @mouseenter="enterHandler"
       data-name="新北市"
       class="96fdfe13-4732-40bb-9e9c-cdc6e310fcb9"
@@ -211,6 +237,7 @@
     />
     <path
       id="f8107e5f-0c12-4631-aed9-d525f4e8558d"
+      @click="clickHandler"
       @mouseenter="enterHandler"
       data-name="宜蘭縣"
       class="96fdfe13-4732-40bb-9e9c-cdc6e310fcb9"
@@ -218,6 +245,7 @@
     />
     <path
       id="65175d47-0a21-4bf1-abfb-b58e4d3069a0"
+      @click="clickHandler"
       @mouseenter="enterHandler"
       data-name="桃園市"
       class="96fdfe13-4732-40bb-9e9c-cdc6e310fcb9"
@@ -225,6 +253,7 @@
     />
     <path
       id="350fa9bc-d25e-4c61-ae4b-b5c60b1a74b6"
+      @click="clickHandler"
       @mouseenter="enterHandler"
       data-name="新竹市"
       class="96fdfe13-4732-40bb-9e9c-cdc6e310fcb9"
@@ -232,6 +261,7 @@
     />
     <path
       id="ea41be52-3728-49f2-aa36-b90633ee55f6"
+      @click="clickHandler"
       @mouseenter="enterHandler"
       data-name="新竹縣"
       class="96fdfe13-4732-40bb-9e9c-cdc6e310fcb9"
@@ -239,6 +269,7 @@
     />
     <path
       id="ffd01e75-6ce2-4cfa-af98-bc61479c68ed"
+      @click="clickHandler"
       @mouseenter="enterHandler"
       data-name="苗栗縣"
       class="96fdfe13-4732-40bb-9e9c-cdc6e310fcb9"
@@ -246,6 +277,7 @@
     />
     <path
       id="d5701392-fc06-4411-bf79-2703f225ab2e"
+      @click="clickHandler"
       @mouseenter="enterHandler"
       data-name="彰化縣"
       class="96fdfe13-4732-40bb-9e9c-cdc6e310fcb9"
@@ -253,6 +285,7 @@
     />
     <path
       id="4eed8214-870d-46ff-b77b-49234479d430"
+      @click="clickHandler"
       @mouseenter="enterHandler"
       data-name="雲林縣"
       class="96fdfe13-4732-40bb-9e9c-cdc6e310fcb9"
@@ -260,6 +293,7 @@
     />
     <path
       id="e468a7aa-2bdf-4501-b48d-35483b7c8ccc"
+      @click="clickHandler"
       @mouseenter="enterHandler"
       data-name="花蓮縣"
       class="96fdfe13-4732-40bb-9e9c-cdc6e310fcb9"
@@ -267,6 +301,7 @@
     />
     <path
       id="7ed22330-8901-4fc6-a351-206f6b2daf2b"
+      @click="clickHandler"
       @mouseenter="enterHandler"
       data-name="南投縣"
       class="96fdfe13-4732-40bb-9e9c-cdc6e310fcb9"
@@ -274,6 +309,7 @@
     />
     <path
       id="ae9239f1-7686-4c40-a5f8-f322391c7328"
+      @click="clickHandler"
       @mouseenter="enterHandler"
       data-name="臺東縣"
       class="96fdfe13-4732-40bb-9e9c-cdc6e310fcb9"
@@ -281,6 +317,7 @@
     />
     <path
       id="0ce2847a-4f9c-4ff7-8c51-6b0fa24ba8b7"
+      @click="clickHandler"
       @mouseenter="enterHandler"
       data-name="臺南市"
       class="96fdfe13-4732-40bb-9e9c-cdc6e310fcb9"
@@ -288,6 +325,7 @@
     />
     <path
       id="e1806d87-d003-48dd-b8d3-3f99b3759340"
+      @click="clickHandler"
       @mouseenter="enterHandler"
       data-name="高雄市"
       class="96fdfe13-4732-40bb-9e9c-cdc6e310fcb9"
@@ -295,6 +333,7 @@
     />
     <path
       id="ae28d47a-650c-43d9-aedc-c1d11a068993"
+      @click="clickHandler"
       @mouseenter="enterHandler"
       data-name="嘉義市"
       class="96fdfe13-4732-40bb-9e9c-cdc6e310fcb9"
@@ -308,6 +347,7 @@
     />
     <g
       id="f292dbb8-1f08-451f-af4d-83b2a6953aa2"
+      @click="clickHandler"
       @mouseenter="enterHandler"
       data-name="金門縣"
     >
