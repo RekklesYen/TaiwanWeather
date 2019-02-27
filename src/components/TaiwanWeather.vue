@@ -1,7 +1,4 @@
-
-<template src='./template.html'>
-
-</template>
+<template src="./template.html"> </template>
 
 <script>
 let apiData = [
@@ -102,15 +99,28 @@ export default {
         .then(res => {
           console.log(res.data.records.locations[0].location)
         })
+    },
+    cors(res) {
+      console.log(res)
     }
   },
   mounted() {
     let api =
       '/api/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-1A93316A-42F6-4B3C-B64B-B321BD9E6EBB&sort=time'
-    // 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-1A93316A-42F6-4B3C-B64B-B321BD9E6EBB'
-    axios.get(api).then(res => (this.cities = res.data.records.location))
+    let cors_api =
+      'https://json2jsonp.com/?url=https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-1A93316A-42F6-4B3C-B64B-B321BD9E6EBB&callback=cb'
+
+    // axios.get(api).then(res => {
+    //   console.log(res)
+    //   this.cities = res.data.records.location
+    // })
+    axios.get(cors_api).then(res => {
+      let json_str = res.data.substring(3, res.data.length - 1)
+      let obj = JSON.parse(json_str)
+      this.cities = obj.records.location
+      //console.log(obj.records.location)
+    })
   }
 }
 </script>
-<style src='./style.css' scoped>
-</style>
+<style src="./style.css" scoped></style>
