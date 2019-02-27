@@ -1,5 +1,5 @@
 module.exports = {
-  baseUrl: '/',
+  publicPath: process.env.NODE_ENV === 'production' ? '/TaiwanWeather/' : '/',
   devServer: {
     // proxy: 'https://opendata.cwb.gov.tw/'
     proxy: {
